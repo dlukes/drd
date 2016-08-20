@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+{% block main %}
+<h3 id="basic">Základní</h3>
+<dl class="dl-horizontal">
+  <table class="table table-hover table-condensed table-attr">
+    <tbody>
+      <tr>
+        <td>rasa</td>
+        <td>{{ char.race }}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>povolání</td>
+        <td>{{ char.cclass }}</td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      <tr>
+        <td>magy</td>
+        <td>{{ char.mana }}<small class="text-muted">/{{ char.mana_max }}</td>
+        <td>
+          <a href="{{ url_for('edit', method='dec', char_id=char.id, attr='mana') }}"
+             class="btn btn-default btn-xs">
+            ubrat
+          </a>
+        </td>
+        <td>
+          <a href="{{ url_for('edit', method='inc', char_id=char.id, attr='mana') }}"
+             class="btn btn-default btn-xs">
+            přidat
+          </a>
+        </td>
+        <td>
+          <a href="{{ url_for('edit', method='set', char_id=char.id, attr='mana_max') }}"
+             class="btn btn-default btn-xs">
+            upravit
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>životy</td>
+        <td>{{ char.hp }}<small class="text-muted">/{{ char.hp_max }}</td>
+        <td>
+          <a href="{{ url_for('edit', method='dec', char_id=char.id, attr='hp') }}"
+             class="btn btn-default btn-xs">
+            ubrat
+          </a>
+        </td>
+        <td>
+          <a href="{{ url_for('edit', method='inc', char_id=char.id, attr='hp') }}"
+             class="btn btn-default btn-xs">
+            přidat
+          </a>
+        </td>
+        <td>
+          <a href="{{ url_for('edit', method='set', char_id=char.id, attr='hp_max') }}"
+             class="btn btn-default btn-xs">
+            upravit
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="attrib">Vlastnosti</h3>
+  <table class="table table-hover table-condensed table-attr">
+    <tbody>
+      <tr>
+        <td>síla</td>
+        <td>{{ char.sil }}<small class="text-muted">/{{ signed(bonus(char.sil)) }}</td>
+        <td>
+          <a href="{{ url_for('edit', method='set', char_id=char.id, attr='sil') }}"
+             class="btn btn-default btn-xs">
+            upravit
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>odolnost</td>
+        <td>{{ char.odl }}<small class="text-muted">/{{ signed(bonus(char.odl)) }}</td>
+        <td>
+          <a href="{{ url_for('edit', method='set', char_id=char.id, attr='odl') }}"
+             class="btn btn-default btn-xs">
+            upravit
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>obratnost</td>
+        <td>{{ char.obr }}<small class="text-muted">/{{ signed(bonus(char.obr)) }}</td>
+        <td>
+          <a href="{{ url_for('edit', method='set', char_id=char.id, attr='obr') }}"
+             class="btn btn-default btn-xs">
+            upravit
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>inteligence</td>
+        <td>{{ char.int }}<small class="text-muted">/{{ signed(bonus(char.int)) }}</td>
+        <td>
+          <a href="{{ url_for('edit', method='set', char_id=char.id, attr='int') }}"
+             class="btn btn-default btn-xs">
+            upravit
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>charisma</td>
+        <td>{{ char.chr }}<small class="text-muted">/{{ signed(bonus(char.chr)) }}</td>
+        <td>
+          <a href="{{ url_for('edit', method='set', char_id=char.id, attr='chr') }}"
+             class="btn btn-default btn-xs">
+            upravit
+          </a>
+        </td>
+      </tr>
+      <tr>
+        <td>velikost</td>
+        <td>{{ char.size }}</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="move">Pohyblivost</h3>
+  <h3 id="perc">Postřeh</h3>
+  <table class="table table-hover table-condensed table-attr">
+    <tbody>
+      <tr>
+        <td>objekty</td>
+        <td>{{ der.perc.obj.rand }} %</td>
+        <td>{{ der.perc.obj.search }} %</td>
+      </tr>
+      <tr>
+        <td>mechanismy</td>
+        <td>{{ der.perc.mech.rand }} %</td>
+        <td>{{ der.perc.mech.search }} %</td>
+      </tr>
+    </tbody>
+  </table>
+  <h3 id="melee">Rubat</h3>
+  <h3 id="ranged">Střílet</h3>
+  <h3 id="defence">Bránit</h3>
+  <h3 id="skills">Skillz</h3>
+  <h3 id="items">Loot</h3>
+  <h3 id="level"><span class="sc">Exp</span></h3>
+  <h3 id="info">Poznámky</h3>
+  <pre>
+{{ char.note }}
+  </pre>
+</dl>
+{% endblock %}
+<!-- Local Variables: -->
+<!-- mode: web -->
+<!-- web-mode-markup-indent-offset: 2 -->
+<!-- web-mode-css-indent-offset: 2 -->
+<!-- End: -->

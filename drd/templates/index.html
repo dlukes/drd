@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block main %}
+<!-- <h3>Uživatelé</h3> -->
+<!-- <ul> -->
+<!-- {% for u in users %} -->
+<!-- <li><a href="#">{{ u.name }}</a></li> -->
+<!-- {% endfor %} -->
+<!-- </ul> -->
+<h3>Postavy</h3>
+<ul>
+  {% for c in characters %}
+  <li><a href="{{ url_for('char', id=c.id) }}">{{ c.name }}</a></li>
+  {% endfor %}
+</ul>
+<a href="{{ url_for('create_character') }}" class="btn btn-default">Vytvořit novou</a>
+{% endblock %}
+<!-- Local Variables: -->
+<!-- mode: web -->
+<!-- web-mode-markup-indent-offset: 2 -->
+<!-- web-mode-css-indent-offset: 2 -->
+<!-- End: -->

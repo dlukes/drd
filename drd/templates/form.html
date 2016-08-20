@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% from "bootstrap/wtf.html" import quick_form %}
+{% block main %}
+{{ quick_form(form, method="POST", form_type="horizontal") }}
+{% endblock %}
+<!-- Local Variables: -->
+<!-- mode: web -->
+<!-- web-mode-markup-indent-offset: 2 -->
+<!-- web-mode-css-indent-offset: 2 -->
+<!-- End: -->
